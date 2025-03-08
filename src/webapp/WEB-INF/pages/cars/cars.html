@@ -14,16 +14,20 @@
 <body>
     <div style="display: flex; justify-content: center; max-width: 992px; padding-bottom: 30px; margin: 20px auto; font-size: 1.5rem;">
         <table style="border-collapse: collapse">
-            <tr>
-                <th>Модель</th>
-                <th>Цвет</th>
-                <th>Цена</th>
-            </tr>
-            <tr th:each="car : ${carsCatalog}">
-                <td th:text="${car.getModel()}">MODEL</td>
-                <td th:text="${car.getColor()}" style="text-align: center">COLOR</td>
-                <td th:text="${car.getPrice() + ' ₽'}" style="text-align: right">PRICE</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Модель</th>
+                    <th>Цвет</th>
+                    <th>Цена</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="car : ${carsCatalog}">
+                    <td th:text="${car.getModel()}">MODEL</td>
+                    <td th:text="${car.getColor()}" style="text-align: center">COLOR</td>
+                    <td th:text="${car.getPrice() + ' ₽'}" style="text-align: right">PRICE</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
