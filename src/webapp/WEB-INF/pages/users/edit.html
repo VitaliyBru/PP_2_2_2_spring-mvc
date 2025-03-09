@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать</title>
+</head>
+<body>
+    <div style="margin: 25px auto; padding: 0 20px 30px; max-width: 992px; font-size: 1.5rem; background: #f0f0f0;">
+        <h2>Редактировать пользователя</h2>
+        <form th:method="POST" th:action="@{/users/edit(id=${user.getId()})}" th:object="${user}">
+            <div>
+                <label for="name">Введите имя: </label>
+                <input type="text" th:field="*{name}" id="name">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="margin-top: 0; font-size: 1.1rem; color: #B22222">ERROR NAME</p>
+            </div>
+            <div>
+                <label for="email">Введите e-mail: </label>
+                <input type="text" th:field="*{email}" id="email">
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="margin-top: 0; font-size: 1.1rem; color: #B22222">ERROR EMAIL</p>
+            </div>
+            <button type="submit">Обновить</button>
+        </form>
+    </div>
+</body>
+</html>

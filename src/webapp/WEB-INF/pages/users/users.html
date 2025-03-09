@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+</head>
+<body>
+    <div style="margin: 25px auto; padding: 0 20px 30px; max-width: 992px; font-size: 1.5rem; background: #f0f0f0;">
+        <h2>Список всех пользователей</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li th:each="user : ${users}">
+                <a th:href="@{/users/user(id=${user.getId()})}" th:text="${user.getName() + ', ' + user.getEmail()}"></a>
+            </li>
+        </ul>
+        <a th:href="@{/users/new}">
+            <button type="button">Добавить пользователя</button>
+        </a>
+    </div>
+</body>
+</html>
