@@ -6,17 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.models.User;
-import web.services.UserServiceImp;
+import web.services.UserService;
 
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/users")
 public class UsersController {
-    private final UserServiceImp userService;
+    private final UserService userService;
 
     @Autowired
-    public UsersController(UserServiceImp userService) {
+    public UsersController(UserService userService) {
         this.userService = userService;
     }
 
