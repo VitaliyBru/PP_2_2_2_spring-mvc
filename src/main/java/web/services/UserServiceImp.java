@@ -1,52 +1,50 @@
 package web.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import web.models.User;
-import web.repositories.UserRepository;
+import web.dao.UserDao;
 
 import java.util.List;
 
-@Service
+@Component
 @Transactional(readOnly = true)
 public class UserServiceImp implements UserService {
-    private final UserRepository userRepository;
+    private final UserDao userDao;
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImp(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<web.models.User> findAll() {
+        return userDao.takeAll();
     }
 
     @Override
-    public User findOneById(Integer id) {
+    public web.models.User findOneById(Integer id) {
         if (id == null) {
             id = 0;
         }
-        return userRepository.findById(id).orElse(null);
+        return userDao.takeUser(id);
     }
 
     @Transactional
     @Override
-    public void saveUser(User user) {
-        userRepository.save(user);
+    public void saveUser(web.models.User user) {
+        userDao.saveUser(user);
     }
 
     @Transactional
     @Override
-    public void updateUser(int id, User user) {
-        user.setId(id);
-        userRepository.save(user);
+    public void updateUser(int id, web.models.User user) {
+        userDao.updateUser(id, user);
     }
 
     @Transactional
     @Override
     public void delete(int id) {
-        userRepository.deleteById(id);
+        userDao.deleteUser(id);
     }
 }

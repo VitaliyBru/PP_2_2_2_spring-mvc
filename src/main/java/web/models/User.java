@@ -11,7 +11,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
 
     @Size(min = 3, max = 45, message = "Имя должно сотержать от 3 до 45 символов")
     @Column(name = "name")
@@ -23,11 +23,11 @@ public class User {
     private String email;
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
